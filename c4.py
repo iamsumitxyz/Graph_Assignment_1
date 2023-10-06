@@ -24,19 +24,19 @@ def bfs_visit(x,G,d,pi:list,theta):
                     d[u] = d[v] + 1
                 elif d[u] == d[v] + 1:
                     if pi[pi[u]] == pi[v]:
-                        # print("heloo")
+                   
                         return True
-                elif d[u] == d[v] and theta[v] == theta[u] == 0:
+                elif d[u] == d[v] and theta[v] == theta[u] == -1:
                     theta[u] = v
                     theta[v] = u
                 elif d[u] == d[v] and theta[v] != u:
-                    #u is already mathched
-                    if theta[v] != 0:
+                    #u is already matched
+                    if theta[v] != -1:
                         c = theta[v]
                         if pi[c] == pi[u]:
-                            # print("heloo")
+                       
                             return True
-                    if theta[u] != 0:
+                    if theta[u] != -1:
                         c = theta[u]
                         if pi[c] == pi[v]:
                             return True
@@ -51,7 +51,7 @@ def BFS(G):
     for i in range(n):
         d = [float("inf") for i in range(n)]
         pi = [-1 for i in range(n)]
-        theta = [0 for i in range(n)]
+        theta = [-1 for i in range(n)]
         if  bfs_visit(i,G,d,pi,theta):
             # print("d",d)
             # print("th",theta)
